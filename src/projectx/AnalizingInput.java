@@ -9,13 +9,13 @@ public class AnalizingInput
     private Op and  =new AND();
     private Op or   = new OR();
     private Not not =new Not();
-    private Inputs manhaten = new Inputs();   
+    private Inputs input = new Inputs();   
     private InputsConvertor PE;
-    private final  HashMap<String,Character> MMMMMMM;
+    private final  HashMap<String,Character> map;
    
 public AnalizingInput()
 {  
-  MMMMMMM = manhaten.mapGetter(); 
+  map = input.mapGetter(); 
 }
    private Boolean CTB(char character)
    {
@@ -34,7 +34,7 @@ public AnalizingInput()
     for(int i=0;i<3;i++)
     {
        
-        PE = new InputsConvertor(manhaten.getter()[i]);
+        PE = new InputsConvertor(input.getter()[i]);
         Calculate(PE.converter());
       
     }
@@ -54,7 +54,7 @@ public AnalizingInput()
                
             if(arrayOfString[i].equals("~"))
             {
-                arrayOfString[i] = BTS(not.operation(CTB(MMMMMMM.get(arrayOfString[i-1]))));
+                arrayOfString[i] = BTS(not.operation(CTB(map.get(arrayOfString[i-1]))));
                 arrayOfString[i-1]="";
             }
                 
@@ -74,9 +74,9 @@ public AnalizingInput()
                     secondOperand=arrayOfString[i-counter];indexTwo=i-counter;counter++;
                 }
                 if(arrayOfString[i].equals("+"))
-                arrayOfString[i] = BTS(or.operation(CTB(MMMMMMM.get(firstOperand)),CTB(MMMMMMM.get(secondOperand))));
+                arrayOfString[i] = BTS(or.operation(CTB(map.get(firstOperand)),CTB(map.get(secondOperand))));
                 else if(arrayOfString[i].equals("^"))
-                arrayOfString[i]=BTS(and.operation(CTB(MMMMMMM.get(firstOperand)),CTB(MMMMMMM.get(secondOperand))));
+                arrayOfString[i]=BTS(and.operation(CTB(map.get(firstOperand)),CTB(map.get(secondOperand))));
 
                secondOperand = firstOperand="";
  
